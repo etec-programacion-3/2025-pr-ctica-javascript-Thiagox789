@@ -12,9 +12,24 @@ export class TaskView {
     this.list.innerHTML = '';
     tasks.forEach((task, idx) => {
       const li = document.createElement('li');
-      li.textContent = task;
-      // TODO: Agrega aquí el botón y la lógica para eliminar la tarea
-      // TODO: Agrega aquí el botón y la lógica para editar la tarea
+      const span = document.createElement('span');
+      span.textContent = task;
+      li.appendChild(span);
+
+      // Botón eliminar
+      const btnEliminar = document.createElement('button');
+      btnEliminar.textContent = 'Eliminar';
+      btnEliminar.className = 'btn-eliminar';
+      btnEliminar.dataset.idx = idx;
+      li.appendChild(btnEliminar);
+
+      // Botón editar
+      const btnEditar = document.createElement('button');
+      btnEditar.textContent = 'Editar';
+      btnEditar.className = 'btn-editar';
+      btnEditar.dataset.idx = idx;
+      li.appendChild(btnEditar);
+
       this.list.appendChild(li);
     });
   }
@@ -28,9 +43,27 @@ export class TaskView {
     };
   }
 
-  // TODO: Asocia el evento de eliminar tarea a la lista
-  // bindRemoveTask(handler) { ... }
 
-  // TODO: Asocia el evento de editar tarea a la lista
-  // bindEditTask(handler) { ... }
+  // Asocia el evento de eliminar tarea a la lista
+  bindRemoveTask(handler) {
+    this.list.addEventListener('click', e => {
+      if (e.target.classList.contains('btn-eliminar')) {
+        const idx = parseInt(e.target.dataset.idx);
+        handler(idx);
+      }
+    });
+  }
+
+  // Asocia el evento de editar tarea a la lista
+  bindEditTask(handler) {
+    this.list.addEventListener('click', e => {
+      if (e.target.classList.contains('btn-editar')) {
+        const idx = parseInt(e.target.dataset.idx);
+        const nuevoTexto = prompt('Editar tarea:', this.list.children[idx].querySelector('span').textContent);
+        if (nuevoTexto !== null && nuevoTexto.trim() !== '') {
+          handler(idx, nuevoTexto.trim());
+        }
+      }
+    });
+  }
 } 
