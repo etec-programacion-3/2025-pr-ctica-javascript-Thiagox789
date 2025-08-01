@@ -7,9 +7,12 @@
     "lint": "eslint src --ext .js",
     "format": "prettier --write src"
   },
+  "dependencies": {
+    "dayjs": "^1.11.11"
+  },
   "devDependencies": {
     "eslint": "^8.0.0",
     "prettier": "^3.0.0",
     "vite": "^5.0.0"
   }
-} 
+}

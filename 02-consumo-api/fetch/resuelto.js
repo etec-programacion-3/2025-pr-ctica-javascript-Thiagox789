@@ -65,8 +65,10 @@ form.onsubmit = async e => {
   const name = document.getElementById('name').value;
   const price = document.getElementById('price').value;
   const description = document.getElementById('description').value;
+  // Llama a la función de crear producto
   await createProduct(name, price, description);
   form.reset();
+  fetchProducts();
 };
 
 // Render inicial
