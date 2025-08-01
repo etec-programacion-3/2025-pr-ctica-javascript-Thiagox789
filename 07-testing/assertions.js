@@ -9,4 +9,8 @@ function suma(a, b) {
 // Pruebas: si la condición es falsa, se muestra el mensaje de error
 console.assert(suma(2, 2) === 4, '2 + 2 debe ser 4');
 console.assert(suma(-1, 1) === 0, '-1 + 1 debe ser 0');
-// Ejercicio: agrega más pruebas aquí para practicar 
+console.assert(suma(0, 0) === 0, '0 + 0 debe ser 0');
+console.assert(suma(100, 200) === 300, '100 + 200 debe ser 300');
+console.assert(suma(-5, -5) === -10, '-5 + -5 debe ser -10');
+console.assert(suma(2, -3) === -1, '2 + -3 debe ser -1');
+
